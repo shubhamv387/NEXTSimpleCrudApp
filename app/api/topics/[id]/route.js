@@ -8,19 +8,27 @@ export async function PUT(req, { params }) {
   const { id } = params;
   const { newTitle: title, newDescription: description } = await req.json();
 
-  await connectMongoDB();
+  try {
+    await connectMongoDB();
 
-  await Topic.findByIdAndUpdate(id, { title, description });
+    await Topic.findByIdAndUpdate(id, { title, description });
 
-  return NextResponse.json({ message: 'topic updated' }, { status: 200 });
+    return NextResponse.json({ message: 'topic updated' }, { status: 200 });
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 export async function GET(req, { params }) {
   const { id } = params;
 
-  await connectMongoDB();
+  try {
+    await connectMongoDB();
 
-  const topic = await Topic.findOne({ _id: id });
+    const topic = await Topic.findOne({ _id: id });
 
-  return NextResponse.json({ topic }, { status: 200 });
+    return NextResponse.json({ topic }, { status: 200 });
+  } catch (error) {
+    console.log(error.message);
+  }
 }
