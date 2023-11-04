@@ -8,7 +8,9 @@ First, create a .env file in the root directory and add your MONGODB Connection 
 MONGODB_URI='YOUR_MONGO_DB_CONNECTION_STRING_HERE'
 ```
 
-Then ti run your app in development mode do this:
+## Run the app
+
+Then to run your app in development mode do this:
 
 ```bash
 npm run dev
